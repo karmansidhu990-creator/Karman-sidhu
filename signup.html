@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up — EcoRoute</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+<div class="auth-shell">
+  <div class="auth-visual" aria-hidden="true">
+    <div class="auth-visual-inner">
+      <span class="brand-mark auth-brand-mark">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8 6 5 10.5 5 14a7 7 0 0 0 14 0c0-3.5-3-8-7-12z"/></svg>
+      </span>
+      <h2>Start making greener travel choices.</h2>
+      <p>Create an account to save comparisons and track your impact over time.</p>
+      <ul class="auth-visual-list">
+        <li>Free — no credit card required</li>
+        <li>Personal impact dashboard</li>
+        <li>Set up in under a minute</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="auth-panel">
+    <a href="index.html" class="auth-back">← Back to home</a>
+
+    <div class="auth-card">
+      <div class="auth-header">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C8 6 5 10.5 5 14a7 7 0 0 0 14 0c0-3.5-3-8-7-12z"/></svg>
+        </span>
+        <h1>Create your account</h1>
+        <p>Join EcoRoute and start comparing routes.</p>
+      </div>
+
+      <form id="signupForm" class="auth-form" novalidate>
+        <div class="field">
+          <label for="signupName">Full name</label>
+          <input type="text" id="signupName" name="name" placeholder="Your name" required>
+          <span class="field-error" data-error-for="signupName">Please enter your name.</span>
+        </div>
+        <div class="field">
+          <label for="signupEmail">Email address</label>
+          <input type="email" id="signupEmail" name="email" placeholder="you@example.com" required>
+          <span class="field-error" data-error-for="signupEmail">Please enter a valid email address.</span>
+        </div>
+        <div class="field">
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" name="password" placeholder="••••••••" required minlength="6">
+          <span class="field-error" data-error-for="signupPassword">Password must be at least 6 characters.</span>
+        </div>
+        <div class="field">
+          <label for="signupConfirm">Confirm password</label>
+          <input type="password" id="signupConfirm" name="confirm" placeholder="••••••••" required minlength="6">
+          <span class="field-error" data-error-for="signupConfirm">Passwords do not match.</span>
+        </div>
+
+        <label class="checkbox-pill checkbox-plain checkbox-terms">
+          <input type="checkbox" id="agreeTerms" required>
+          <span>I agree to the Terms and Privacy Policy</span>
+        </label>
+        <span class="field-error" data-error-for="agreeTerms">Please agree to continue.</span>
+
+        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+      </form>
+
+      <p class="auth-footer-text">
+        Already have an account? <a href="login.html" class="auth-link">Log in</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script src="auth.js"></script>
+</body>
+</html>
