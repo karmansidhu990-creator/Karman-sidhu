@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — EcoRoute</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+
+<div class="dashboard-shell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="dashboard-sidebar" id="dashboardSidebar">
+    <a href="index.html" class="brand sidebar-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C8 6 5 10.5 5 14a7 7 0 0 0 14 0c0-3.5-3-8-7-12z"/></svg>
+      </span>
+      <span class="brand-name">EcoRoute</span>
+    </a>
+
+    <nav class="sidebar-nav" aria-label="Dashboard">
+      <button class="sidebar-link active" data-panel="panel-overview">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="12" width="8" height="9" rx="1.5"/><rect x="3" y="15" width="8" height="6" rx="1.5"/></svg>
+        <span>Overview</span>
+      </button>
+      <button class="sidebar-link" data-panel="panel-planner">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="M6 8.4V14a4 4 0 0 0 4 4h3.6"/></svg>
+        <span>Plan a Route</span>
+      </button>
+      <button class="sidebar-link" data-panel="panel-history">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg>
+        <span>Trip History</span>
+      </button>
+      <button class="sidebar-link" data-panel="panel-impact">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V9M12 19V5M20 19v-7"/></svg>
+        <span>Impact Report</span>
+      </button>
+    </nav>
+
+    <a href="index.html" class="sidebar-link sidebar-logout">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+      <span>Log Out</span>
+    </a>
+  </aside>
+
+  <div class="dashboard-overlay" id="dashboardOverlay"></div>
+
+  <!-- ============ MAIN ============ -->
+  <div class="dashboard-main">
+    <header class="dashboard-topbar">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <h1 class="topbar-title" id="topbarTitle">Overview</h1>
+      <div class="user-chip">
+        <span class="user-avatar">EC</span>
+        <span class="user-name">Eco Commuter</span>
+      </div>
+    </header>
+
+    <div class="dashboard-content">
+
+      <!-- ---------- OVERVIEW PANEL ---------- -->
+      <section class="panel active" id="panel-overview">
+        <p class="panel-lede">Welcome back — here's a snapshot of your travel comparisons.</p>
+
+        <div class="overview-grid">
+          <div class="metric-card">
+            <span class="metric-label">Routes Compared</span>
+            <span class="metric-value">—</span>
+            <span class="metric-hint">Updates once route data is connected</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Estimated CO₂ Saved</span>
+            <span class="metric-value">— kg</span>
+            <span class="metric-hint">vs. driving every trip by car</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Most-Used Mode</span>
+            <span class="metric-value">—</span>
+            <span class="metric-hint">Based on selected routes</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Last Comparison</span>
+            <span class="metric-value">—</span>
+            <span class="metric-hint">No comparisons run yet</span>
+          </div>
+        </div>
+
+        <div class="overview-cta">
+          <div>
+            <h3>Ready to plan a greener trip?</h3>
+            <p>Enter a starting point and destination to compare emissions across travel modes.</p>
+          </div>
+          <button class="btn btn-primary" data-goto-panel="panel-planner">Plan a Route</button>
+        </div>
+      </section>
+
+      <!-- ---------- PLAN A ROUTE PANEL ---------- -->
+      <section class="panel" id="panel-planner">
+        <p class="panel-lede">Enter your journey to compare travel options by environmental impact.</p>
+
+        <div class="planner-card">
+          <form id="plannerForm" class="planner-form" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="start">Starting Location</label>
+                <input type="text" id="start" name="start" placeholder="e.g. Ludhiana Bus Stand" required>
+                <span class="field-error" data-error-for="start">Please enter a starting location.</span>
+              </div>
+              <div class="field">
+                <label for="destination">Destination</label>
+                <input type="text" id="destination" name="destination" placeholder="e.g. Chandigarh Sector 17" required>
+                <span class="field-error" data-error-for="destination">Please enter a destination.</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="distanceInput">Distance <span class="optional">(optional — used if no map API is connected)</span></label>
+                <input type="number" id="distanceInput" name="distanceInput" placeholder="e.g. 45" min="0" step="0.1">
+              </div>
+              <div class="field">
+                <label>Transport Options to Compare</label>
+                <div class="checkbox-group">
+                  <label class="checkbox-pill"><input type="checkbox" value="car" checked><span>Car</span></label>
+                  <label class="checkbox-pill"><input type="checkbox" value="bus" checked><span>Bus</span></label>
+                  <label class="checkbox-pill"><input type="checkbox" value="train" checked><span>Train</span></label>
+                  <label class="checkbox-pill"><input type="checkbox" value="bike" checked><span>Bicycle</span></label>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="compareBtn">Compare Routes</button>
+          </form>
+        </div>
+
+        <!-- Results (hidden until Compare Routes is clicked) -->
+        <div id="resultsArea" hidden>
+
+          <h2 class="results-heading">Transport Comparison</h2>
+          <div class="cards-grid">
+
+            <article class="transport-card" data-mode="car">
+              <div class="card-top">
+                <span class="t-icon" aria-hidden="true"><img src="assets/icons/car.svg" alt="" width="22" height="22"></span>
+                <h3>Car</h3>
+              </div>
+              <ul class="t-stats">
+                <li><span>Distance</span><b id="carDistance">— km</b></li>
+                <li><span>Fuel Consumption</span><b id="carFuel">— L</b></li>
+                <li><span>CO₂ Emissions</span><b id="carCO2">— kg</b></li>
+              </ul>
+              <p class="t-note">Highest per-trip emissions of the compared options; best for flexibility and door-to-door travel.</p>
+            </article>
+
+            <article class="transport-card" data-mode="bus">
+              <div class="card-top">
+                <span class="t-icon" aria-hidden="true"><img src="assets/icons/bus.svg" alt="" width="22" height="22"></span>
+                <h3>Bus</h3>
+              </div>
+              <ul class="t-stats">
+                <li><span>Distance</span><b id="busDistance">— km</b></li>
+                <li><span>CO₂ Emissions</span><b id="busCO2">— kg</b></li>
+              </ul>
+              <p class="t-note">Shared transport lowers per-passenger emissions compared to private vehicles.</p>
+            </article>
+
+            <article class="transport-card" data-mode="train">
+              <div class="card-top">
+                <span class="t-icon" aria-hidden="true"><img src="assets/icons/train.svg" alt="" width="22" height="22"></span>
+                <h3>Train</h3>
+              </div>
+              <ul class="t-stats">
+                <li><span>Distance</span><b id="trainDistance">— km</b></li>
+                <li><span>CO₂ Emissions</span><b id="trainCO2">— kg</b></li>
+              </ul>
+              <p class="t-note">Rail travel typically offers strong efficiency over longer distances.</p>
+            </article>
+
+            <article class="transport-card" data-mode="bike">
+              <div class="card-top">
+                <span class="t-icon" aria-hidden="true"><img src="assets/icons/bicycle.svg" alt="" width="22" height="22"></span>
+                <h3>Bicycle</h3>
+              </div>
+              <ul class="t-stats">
+                <li><span>Distance</span><b id="bikeDistance">— km</b></li>
+                <li><span>CO₂ Emissions</span><b id="bikeCO2">0 kg</b></li>
+              </ul>
+              <p class="t-note">Zero direct emissions — the most environmentally friendly option for short-to-mid distances.</p>
+            </article>
+
+          </div>
+
+          <div class="metric-grid metric-grid-3">
+            <div class="metric-card">
+              <span class="metric-label">Distance Range</span>
+              <span class="metric-value" id="metricDistance">—</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">Fuel Consumption</span>
+              <span class="metric-value" id="metricFuel">—</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label">CO₂ Emissions</span>
+              <span class="metric-value" id="metricCO2">—</span>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <h3>Estimated CO₂ Emissions by Mode</h3>
+            <div class="bar-chart">
+              <div class="bar-row">
+                <span class="bar-label">Car</span>
+                <div class="bar-track"><div class="bar-fill" id="barCar" style="width:0%"></div></div>
+                <span class="bar-value" id="barCarValue">— kg</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label">Bus</span>
+                <div class="bar-track"><div class="bar-fill" id="barBus" style="width:0%"></div></div>
+                <span class="bar-value" id="barBusValue">— kg</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label">Train</span>
+                <div class="bar-track"><div class="bar-fill" id="barTrain" style="width:0%"></div></div>
+                <span class="bar-value" id="barTrainValue">— kg</span>
+              </div>
+              <div class="bar-row">
+                <span class="bar-label">Bicycle</span>
+                <div class="bar-track"><div class="bar-fill" id="barBike" style="width:2%"></div></div>
+                <span class="bar-value" id="barBikeValue">0 kg</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="recommend-card">
+            <span class="eyebrow eyebrow-on-dark">Recommended Eco-Friendly Option</span>
+            <div class="recommend-body">
+              <span class="recommend-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C8 6 5 10.5 5 14a7 7 0 0 0 14 0c0-3.5-3-8-7-12z"/></svg>
+              </span>
+              <div class="recommend-text">
+                <h3 id="ecoOption">Bicycle</h3>
+                <p>The lowest estimated emissions for this route. Choosing this option avoids the CO₂ output of motorized travel entirely.</p>
+              </div>
+              <div class="recommend-metric">
+                <span class="metric-value">0 kg</span>
+                <span class="metric-label">Estimated CO₂</span>
+              </div>
+            </div>
+            <div class="impact-indicator">
+              <div class="impact-track"><div class="impact-fill" style="width:100%"></div></div>
+              <span>Lowest environmental impact of the compared options</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ---------- TRIP HISTORY PANEL ---------- -->
+      <section class="panel" id="panel-history">
+        <p class="panel-lede">Your past route comparisons will appear here.</p>
+        <div class="empty-state">
+          <span class="empty-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg>
+          </span>
+          <h3>No trips yet</h3>
+          <p>Once you compare a route, it will be saved here for quick reference.</p>
+          <button class="btn btn-ghost" data-goto-panel="panel-planner">Plan your first route</button>
+        </div>
+      </section>
+
+      <!-- ---------- IMPACT REPORT PANEL ---------- -->
+      <section class="panel" id="panel-impact">
+        <p class="panel-lede">A running summary of your environmental impact across all comparisons.</p>
+        <div class="impact-stats">
+          <div class="impact-stat">
+            <span class="impact-figure">— kg</span>
+            <span class="impact-caption">Total CO₂ Emissions Compared</span>
+          </div>
+          <div class="impact-stat">
+            <span class="impact-figure">— L</span>
+            <span class="impact-caption">Total Fuel Consumption Compared</span>
+          </div>
+          <div class="impact-stat">
+            <span class="impact-figure">—%</span>
+            <span class="impact-caption">Trips Using Sustainable Transport</span>
+          </div>
+        </div>
+        <p class="panel-footnote">Figures populate automatically as route comparisons are run.</p>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

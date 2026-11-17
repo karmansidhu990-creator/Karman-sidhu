@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoRoute — Eco-Friendly Route Planner</title>
+<meta name="description" content="Compare travel options by distance, fuel consumption and CO₂ emissions, and choose the greener journey.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M12 2C8 6 5 10.5 5 14a7 7 0 0 0 14 0c0-3.5-3-8-7-12z"/>
+          <path d="M12 8v9M9 12l3-3 3 3"/>
+        </svg>
+      </span>
+      <span class="brand-name">EcoRoute</span>
+    </a>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <a href="index.html" class="nav-link active" data-section="home">Home</a>
+      <a href="#how-it-works" class="nav-link" data-section="how-it-works">How It Works</a>
+      <a href="#about" class="nav-link" data-section="about">About</a>
+    </nav>
+
+    <div class="nav-auth">
+      <a href="login.html" class="btn btn-ghost btn-sm">Log In</a>
+      <a href="signup.html" class="btn btn-primary btn-sm">Sign Up</a>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Smarter Travel. Lower Impact.</p>
+        <h1>Plan your journey.<br>Reduce your carbon footprint.</h1>
+        <p class="hero-desc">
+          EcoRoute compares distance, fuel consumption and CO₂ emissions across
+          car, bus, train and bicycle travel, so you can choose the route
+          that's kinder to the environment before you set off.
+        </p>
+        <div class="hero-actions">
+          <a href="signup.html" class="btn btn-primary">Get Started</a>
+          <a href="login.html" class="btn btn-ghost">Log In</a>
+        </div>
+        <p class="hero-fineprint">Free to use · No credit card required</p>
+      </div>
+
+      <div class="hero-visual">
+        <img src="assets/images/hero-illustration.svg" alt="Illustration of a leaf with a car and bicycle on a road, representing greener travel" class="hero-svg" width="420" height="360">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCT PREVIEW STRIP ============ -->
+  <section class="preview-strip">
+    <div class="section-inner preview-inner">
+      <div class="preview-item">
+        <span class="preview-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 3v3M16 3v3"/></svg>
+        </span>
+        <div><h3>Save your trips</h3><p>Every comparison is logged to your dashboard.</p></div>
+      </div>
+      <div class="preview-item">
+        <span class="preview-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V9M12 19V5M20 19v-7"/></svg>
+        </span>
+        <div><h3>Track your impact</h3><p>See cumulative CO₂ saved over time.</p></div>
+      </div>
+      <div class="preview-item">
+        <span class="preview-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C8 6 5 10.5 5 14a7 7 0 0 0 14 0c0-3.5-3-8-7-12z"/></svg>
+        </span>
+        <div><h3>Get recommendations</h3><p>Instantly see the greenest option for any route.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="section-inner">
+      <div class="section-head">
+        <p class="eyebrow">Process</p>
+        <h2>How It Works</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>Enter Your Route</h3>
+          <p>Provide a starting location and destination for your journey.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>Compare Travel Options</h3>
+          <p>Review distance, fuel consumption and CO₂ emissions across car, bus, train and bicycle.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>Choose a Greener Journey</h3>
+          <p>Pick the option that balances your needs with a lower environmental footprint.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ENVIRONMENTAL IMPACT ============ -->
+  <section class="impact">
+    <div class="section-inner">
+      <div class="section-head">
+        <p class="eyebrow">Why It Matters</p>
+        <h2>Environmental Impact</h2>
+        <p class="section-sub">Transportation choices meaningfully affect emissions, fuel use and long-term sustainability.</p>
+      </div>
+      <div class="impact-stats">
+        <div class="impact-stat">
+          <span class="impact-figure">— kg</span>
+          <span class="impact-caption">CO₂ Emissions (placeholder)</span>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-figure">— L</span>
+          <span class="impact-caption">Fuel Consumption (placeholder)</span>
+        </div>
+        <div class="impact-stat">
+          <span class="impact-figure">—%</span>
+          <span class="impact-caption">Sustainable Transportation Share (placeholder)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT PROJECT ============ -->
+  <section class="about" id="about">
+    <div class="section-inner about-inner">
+      <div class="section-head">
+        <p class="eyebrow">About</p>
+        <h2>About This Project</h2>
+      </div>
+      <p class="about-text">
+        EcoRoute is an educational prototype developed as an Environmental
+        Studies university project. It demonstrates how a travel-planning
+        interface can help users compare transportation choices based on
+        distance, fuel consumption and estimated CO₂ emissions, and
+        encourages more environmentally conscious travel decisions.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C8 6 5 10.5 5 14a7 7 0 0 0 14 0c0-3.5-3-8-7-12z"/></svg>
+      </span>
+      <span class="brand-name">EcoRoute</span>
+    </div>
+    <p class="footer-desc">Comparing travel options by environmental impact — an Environmental Studies university project.</p>
+
+    <nav class="footer-links" aria-label="Footer">
+      <a href="index.html">Home</a>
+      <a href="login.html">Log In</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <p class="footer-meta">Environmental Studies — University Project</p>
+    <p class="footer-copy">© 2026 EcoRoute. Educational prototype, not for commercial use.</p>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>
